@@ -2,9 +2,11 @@ package org.example.ecommerceca.item.infraestructure.persistence
 
 import org.example.ecommerceca.item.domain.ItemRepository
 import org.example.ecommerceca.item.domain.model.Item
+import org.springframework.stereotype.Repository
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
+@Repository
 class InMemoryRepository: ItemRepository  {
     @OptIn(ExperimentalUuidApi::class)
     var items: MutableMap<Uuid, Item> = mutableMapOf()
