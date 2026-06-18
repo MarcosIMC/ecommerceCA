@@ -18,6 +18,7 @@ class Mapper {
             name = item.name.name,
             description = item.description.description,
             price = item.price.price,
+            stock = item.stock.stock
         )
     }
 
@@ -33,13 +34,12 @@ class Mapper {
     }
     
     @OptIn(ExperimentalUuidApi::class)
-    fun toUpdateItem(id: Uuid, itemUpdateDTO: ItemUpdateDTO): Item {
-        return Item(
-            id = id,
-            name = ItemName(itemUpdateDTO.name),
-            description = ItemDescription(itemUpdateDTO.description),
-            price = ItemPrice(itemUpdateDTO.price),
-            stock = ItemStock(itemUpdateDTO.stock),
+    fun toUpdateItemCommand(itemUpdateDTO: ItemUpdateDTO): UpdateItemCommand {
+        return UpdateItemCommand(
+            name = itemUpdateDTO.name?.let { ItemName(it) },
+            description = itemUpdateDTO.description?.let { ItemDescription(it) },
+            price = itemUpdateDTO.price?.let { ItemPrice(it) },
+            stock = itemUpdateDTO.stock?.let { ItemStock(it) }
         )
     }
 }

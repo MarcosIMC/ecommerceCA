@@ -12,7 +12,21 @@ class Item @OptIn(ExperimentalUuidApi::class) constructor(
     var name: ItemName,
     var description: ItemDescription,
     var price: ItemPrice,
-    val stock: ItemStock,
+    var stock: ItemStock,
 ) {
+    fun rename(name: ItemName) {
+        this.name = name
+    }
 
+    fun changeDescription(description: ItemDescription) {
+        this.description = description
+    }
+
+    fun changePrice(price: ItemPrice) {
+        this.price = price
+    }
+
+    fun changeStock(stock: ItemStock) {
+        this.stock = stock
+    }
 }

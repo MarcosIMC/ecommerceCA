@@ -45,8 +45,8 @@ class ItemController(
     @PutMapping("/updateItem/{id}")
     fun put(@PathVariable id: String, @RequestBody item: ItemUpdateDTO) {
         val uuid = Uuid.parse(id)
-        val itemToUpdate = mapper.toUpdateItem(uuid, item)
-        return updateItemUseCase.execute(uuid, itemToUpdate.name, itemToUpdate.description, itemToUpdate.price, )
+        val itemToUpdate = mapper.toUpdateItemCommand(item)
+        return updateItemUseCase.execute(uuid, itemToUpdate)
     }
 
     @OptIn(ExperimentalUuidApi::class)
