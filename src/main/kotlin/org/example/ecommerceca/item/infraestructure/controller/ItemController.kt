@@ -6,6 +6,7 @@ import org.example.ecommerceca.item.application.usecase.ListItemUseCase
 import org.example.ecommerceca.item.application.usecase.UpdateItemUseCase
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.ItemCreationDTO
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.ItemResponseDTO
+import org.example.ecommerceca.item.infraestructure.controller.POJOs.ItemUpdateDTO
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.Mapper
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -42,9 +43,10 @@ class ItemController(
 
     @OptIn(ExperimentalUuidApi::class)
     @PutMapping("/updateItem/{id}")
-    fun put(@PathVariable id: Uuid, @RequestBody item: ItemCreationDTO) {
-        val itemToUpdate = mapper.toItem(item)
-        return updateItemUseCase.execute(id, itemToUpdate.name, itemToUpdate.description, itemToUpdate.price, )
+    fun put(@PathVariable id: String, @RequestBody item: ItemUpdateDTO) {
+        val uuid = Uuid.parse(id)
+        val itemToUpdate = mapper.toUpdateItem(uuid, item)
+        return updateItemUseCase.execute(uuid, itemToUpdate.name, itemToUpdate.description, itemToUpdate.price, )
     }
 
     @OptIn(ExperimentalUuidApi::class)
