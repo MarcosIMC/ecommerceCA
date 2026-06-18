@@ -1,5 +1,6 @@
 package org.example.ecommerceca.item.infraestructure.controller.POJOs
 
+import org.example.ecommerceca.item.application.usecase.UpdateItemCommand
 import org.example.ecommerceca.item.domain.model.Item
 import org.example.ecommerceca.item.domain.valueobject.ItemDescription
 import org.example.ecommerceca.item.domain.valueobject.ItemName

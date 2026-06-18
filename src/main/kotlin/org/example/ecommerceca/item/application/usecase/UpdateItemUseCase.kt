@@ -1,10 +1,6 @@
 package org.example.ecommerceca.item.application.usecase;
 
 import org.example.ecommerceca.item.domain.ItemRepository
-import org.example.ecommerceca.item.domain.valueobject.ItemDescription
-import org.example.ecommerceca.item.domain.valueobject.ItemName
-import org.example.ecommerceca.item.domain.valueobject.ItemPrice
-import org.example.ecommerceca.item.infraestructure.controller.POJOs.UpdateItemCommand
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 

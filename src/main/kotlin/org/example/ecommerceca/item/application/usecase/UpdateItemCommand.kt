@@ -1,4 +1,4 @@
-package org.example.ecommerceca.item.infraestructure.controller.POJOs
+package org.example.ecommerceca.item.application.usecase
 
 import org.example.ecommerceca.item.domain.valueobject.ItemDescription
 import org.example.ecommerceca.item.domain.valueobject.ItemName
