@@ -10,14 +10,12 @@ class ItemPrice {
         this.price = price
     }
 
-    fun increase(newPrice: Double) {
-        this.price += newPrice
-    }
+    private fun applyDiscount(discount: Double) : Double {
+        val newPrice = (this.price * discount) / 100
 
-    fun decrease(newPrice: Double) {
         if (newPrice < 0) {
-            throw IllegalArgumentException("Item price cannot be negative")
+            throw IllegalArgumentException("The new price cannot be negative")
         }
-        this.price -= newPrice
+        return newPrice
     }
 }

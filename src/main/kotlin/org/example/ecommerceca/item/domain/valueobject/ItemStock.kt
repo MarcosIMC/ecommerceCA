@@ -15,6 +15,9 @@ class ItemStock {
     }
 
     fun decrease() {
+        if (this.stock == 0) {
+            throw IllegalArgumentException("Item stock cannot be negative")
+        }
         this.stock--
     }
 
