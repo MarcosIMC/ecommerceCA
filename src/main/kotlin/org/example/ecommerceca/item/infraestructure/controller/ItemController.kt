@@ -51,7 +51,8 @@ class ItemController(
 
     @OptIn(ExperimentalUuidApi::class)
     @DeleteMapping("/deleteItem/{id}")
-    fun delete(@PathVariable id: Uuid) {
-        return deleteItemUseCase.execute(id)
+    fun delete(@PathVariable id: String) {
+        val uuid = Uuid.parse(id)
+        return deleteItemUseCase.execute(uuid)
     }
 }
