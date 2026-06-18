@@ -19,6 +19,9 @@ class ItemStock {
     }
 
     fun newStock(newStock: Int) {
+        if (newStock < 0) {
+            throw IllegalArgumentException("Item stock cannot be negative")
+        }
         this.stock = newStock
     }
 }

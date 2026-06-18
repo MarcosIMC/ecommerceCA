@@ -15,6 +15,9 @@ class ItemPrice {
     }
 
     fun decrease(newPrice: Double) {
+        if (newPrice < 0) {
+            throw IllegalArgumentException("Item price cannot be negative")
+        }
         this.price -= newPrice
     }
 }
