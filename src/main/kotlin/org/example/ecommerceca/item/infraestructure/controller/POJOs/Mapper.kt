@@ -1,8 +1,13 @@
 package org.example.ecommerceca.item.infraestructure.controller.POJOs
 
 import org.example.ecommerceca.item.domain.model.Item
+import org.example.ecommerceca.item.domain.valueobject.ItemDescription
+import org.example.ecommerceca.item.domain.valueobject.ItemName
+import org.example.ecommerceca.item.domain.valueobject.ItemPrice
+import org.example.ecommerceca.item.domain.valueobject.ItemStock
 import org.springframework.stereotype.Component
 import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 @Component
 class Mapper {
@@ -19,11 +24,11 @@ class Mapper {
     @OptIn(ExperimentalUuidApi::class)
     fun toItem(itemCreationDTO: ItemCreationDTO): Item {
         return Item(
-            id = itemCreationDTO.id,
-            name = itemCreationDTO.name,
-            description = itemCreationDTO.description,
-            price = itemCreationDTO.price,
-            stock = itemCreationDTO.stock
+            id = Uuid.random(),
+            name = ItemName(itemCreationDTO.name),
+            description = ItemDescription(itemCreationDTO.description),
+            price = ItemPrice(itemCreationDTO.price),
+            stock = ItemStock(itemCreationDTO.stock)
         )
     }
 }
