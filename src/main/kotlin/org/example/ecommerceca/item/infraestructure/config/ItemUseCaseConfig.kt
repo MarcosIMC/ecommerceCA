@@ -1,6 +1,7 @@
 package org.example.ecommerceca.item.infraestructure.config
 
 import org.example.ecommerceca.item.application.usecase.CreateItemUseCase
+import org.example.ecommerceca.item.application.usecase.DeleteItemUseCase
 import org.example.ecommerceca.item.application.usecase.ListItemUseCase
 import org.example.ecommerceca.item.application.usecase.UpdateItemUseCase
 import org.example.ecommerceca.item.domain.ItemRepository
@@ -17,4 +18,7 @@ open class ItemUseCaseConfig {
 
     @Bean
     open fun updateItemUseCase(repository: ItemRepository) = UpdateItemUseCase(repository)
+
+    @Bean
+    open fun deleteItemUseCase(repository: ItemRepository) = DeleteItemUseCase(repository)
 }

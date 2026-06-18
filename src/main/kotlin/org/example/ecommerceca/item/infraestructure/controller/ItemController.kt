@@ -1,11 +1,13 @@
 package org.example.ecommerceca.item.infraestructure.controller
 
 import org.example.ecommerceca.item.application.usecase.CreateItemUseCase
+import org.example.ecommerceca.item.application.usecase.DeleteItemUseCase
 import org.example.ecommerceca.item.application.usecase.ListItemUseCase
 import org.example.ecommerceca.item.application.usecase.UpdateItemUseCase
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.ItemCreationDTO
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.ItemResponseDTO
 import org.example.ecommerceca.item.infraestructure.controller.POJOs.Mapper
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -23,6 +25,7 @@ class ItemController(
     private val listUseCase: ListItemUseCase,
     private val createItemUseCase: CreateItemUseCase,
     private val updateItemUseCase: UpdateItemUseCase,
+    private val deleteItemUseCase: DeleteItemUseCase,
     private val mapper: Mapper
 ) {
     @OptIn(ExperimentalUuidApi::class)
@@ -42,5 +45,11 @@ class ItemController(
     fun put(@PathVariable id: Uuid, @RequestBody item: ItemCreationDTO) {
         val itemToUpdate = mapper.toItem(item)
         return updateItemUseCase.execute(id, itemToUpdate.name, itemToUpdate.description, itemToUpdate.price, )
+    }
+
+    @OptIn(ExperimentalUuidApi::class)
+    @DeleteMapping("/deleteItem/{id}")
+    fun delete(@PathVariable id: Uuid) {
+        return deleteItemUseCase.execute(id)
     }
 }
