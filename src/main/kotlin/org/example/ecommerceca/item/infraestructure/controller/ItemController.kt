@@ -36,13 +36,13 @@ class ItemController(
         return listUseCase.execute().stream().map { mapper.toDto(it) }.toList()
     }
 
-    @PostMapping("/newItem")
+    @PostMapping()
     fun post(@RequestBody itemCreation: ItemCreationDTO) {
         return createItemUseCase.execute(mapper.toItem(itemCreation))
     }
 
     @OptIn(ExperimentalUuidApi::class)
-    @PutMapping("/updateItem/{id}")
+    @PutMapping("/{id}")
     fun put(@PathVariable id: String, @RequestBody item: ItemUpdateDTO) {
         val uuid = Uuid.parse(id)
         val itemToUpdate = mapper.toUpdateItemCommand(item)
@@ -50,7 +50,7 @@ class ItemController(
     }
 
     @OptIn(ExperimentalUuidApi::class)
-    @DeleteMapping("/deleteItem/{id}")
+    @DeleteMapping("{id}")
     fun delete(@PathVariable id: String) {
         val uuid = Uuid.parse(id)
         return deleteItemUseCase.execute(uuid)
