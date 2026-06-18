@@ -14,6 +14,6 @@ class UpdateItemUseCase(private val repository: ItemRepository) {
         name?.let { item.name = it }
         description?.let { item.description = it }
         price?.let { item.price = it }
-        repository.save(item)
+        repository.update(itemId, item)
     }
 }
