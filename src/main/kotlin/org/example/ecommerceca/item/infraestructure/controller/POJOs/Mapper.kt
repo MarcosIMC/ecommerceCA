@@ -14,7 +14,7 @@ class Mapper {
     @OptIn(ExperimentalUuidApi::class)
     fun toDto(item: Item): ItemResponseDTO {
         return ItemResponseDTO(
-            id = item.id,
+            id = item.id.toString(),
             name = item.name.name,
             description = item.description.description,
             price = item.price.price,
@@ -29,6 +29,17 @@ class Mapper {
             description = ItemDescription(itemCreationDTO.description),
             price = ItemPrice(itemCreationDTO.price),
             stock = ItemStock(itemCreationDTO.stock)
+        )
+    }
+    
+    @OptIn(ExperimentalUuidApi::class)
+    fun toUpdateItem(id: Uuid, itemUpdateDTO: ItemUpdateDTO): Item {
+        return Item(
+            id = id,
+            name = ItemName(itemUpdateDTO.name),
+            description = ItemDescription(itemUpdateDTO.description),
+            price = ItemPrice(itemUpdateDTO.price),
+            stock = ItemStock(itemUpdateDTO.stock),
         )
     }
 }
